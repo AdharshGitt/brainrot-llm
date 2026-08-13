@@ -14,10 +14,10 @@ from trl import SFTConfig, SFTTrainer
 
 MODEL_NAME = "Qwen/Qwen3-0.6B"
 
-TRAIN_FILE = "dataset/brainrot.jsonl"
-VALIDATION_FILE = "dataset/validation.jsonl"
+TRAIN_FILE = "dataset/brainrot_v4_train.jsonl"
+VALIDATION_FILE = "dataset/brainrot_v4_validation.jsonl"
 
-OUTPUT_DIR = "./brainrot-qwen"
+OUTPUT_DIR = "./brainrot-qwen-v4"
 
 
 # ============================================================
@@ -58,6 +58,8 @@ tokenizer = AutoTokenizer.from_pretrained(
     MODEL_NAME
 )
 
+tokenizer.padding_side = "right"
+
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
@@ -75,7 +77,7 @@ if tokenizer.pad_token is None:
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
-    quantization_config=bnb_config,
+    torch_dtype=torch.float16,
     device_map="cuda",
 )
 
