@@ -14,10 +14,10 @@ from trl import SFTConfig, SFTTrainer
 
 MODEL_NAME = "Qwen/Qwen3-0.6B"
 
-TRAIN_FILE = "dataset/brainrot_v4_train.jsonl"
-VALIDATION_FILE = "dataset/brainrot_v4_validation.jsonl"
+TRAIN_FILE = "dataset/brainrot_v7_train.jsonl"
+VALIDATION_FILE = "dataset/brainrot_v7_validation.jsonl"
 
-OUTPUT_DIR = "./brainrot-qwen-v4"
+OUTPUT_DIR = "./brainrot-qwen-v7"
 
 
 # ============================================================
@@ -118,7 +118,7 @@ training_args = SFTConfig(
 
     gradient_accumulation_steps=8,
 
-    learning_rate=1e-4,
+    learning_rate=5e-5,
 
     logging_steps=5,
 

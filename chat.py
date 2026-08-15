@@ -7,7 +7,7 @@ from peft import PeftModel
 # ============================================================
 
 MODEL_NAME = "Qwen/Qwen3-0.6B"
-ADAPTER_PATH = "./brainrot-qwen-v4"
+ADAPTER_PATH = "./brainrot-qwen-v7"
 
 DEVICE = "cuda"
 
@@ -122,8 +122,8 @@ while True:
 
             max_new_tokens=100,
 
-            temperature=0.8,
-            top_p=0.9,
+            temperature=0.7,
+            top_p=0.8,
             top_k=20,
 
             repetition_penalty=1.1,
